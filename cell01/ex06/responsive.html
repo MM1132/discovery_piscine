@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		table {
+			border: 1px black solid;
+			border-collapse: collapse;
+			height: 100%;
+			width: 100%;
+		}
+
+		#first {
+			background-color: #c3c67e;
+		}
+
+		#second {
+			background-color: #f9c4ae;
+		}
+
+		tr {
+			display: flex;
+			flex-direction: row;
+			height: 100%;
+		}
+
+		td {
+			flex-grow: 1;
+		}
+
+		.table-container {
+			height: 100vh;
+		}
+	</style>
+</head>
+<body>
+	<div class="table-container">
+		<table>
+			<tr>
+				<td id="first">First cell</td>
+				<td id="second">Second cell</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
