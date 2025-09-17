@@ -1,0 +1,53 @@
+.btn {
+	background-color: DodgerBlue;
+	border: none;
+	color: white;
+	padding: 12px 16px;
+	font-size: 16px;
+	cursor: pointer;
+	display: inline-block;
+}
+
+/* .card {
+	box-shadow: 0 0 20px 0 black;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	max-width: 300px;
+	align-items: center;
+	gap: 15px;
+	justify-content: space-between;
+} */
+
+.card {
+	text-align: center;
+	box-shadow: 0 0 20px 0 black;
+	border-collapse: collapse;
+}
+
+td {
+	padding: 0;
+	padding-top: 10px;
+}
+
+.card > img {
+	width: 100%;
+}
+
+.social-icons {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+}
+
+.contact-button {
+	border: 0;
+	width: 100%;
+	background-color: black;
+	color: white;
+	padding: 20px 10px;
+	box-sizing: border-box;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+}

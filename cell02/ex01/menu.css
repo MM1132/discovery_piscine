@@ -1,0 +1,21 @@
+.dropdown-container {
+	display: inline-flex;
+	flex-direction: column;
+	border: 1px solid black;
+	cursor: pointer;
+	gap: 5px;
+	padding: 8px;
+}
+
+.dropdown-container:hover > .dropdown-item {
+	display: block;
+}
+
+.dropdown-item {
+	display: none;
+	padding: 5px 10px;
+}
+
+.dropdown-item:hover {
+	background-color: #c6e4ff;
+}
