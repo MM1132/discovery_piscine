@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculator</title>
+
+	<style>
+
+	</style>
+</head>
+<body>
+	<input type="text" id="field1" />
+	<select name="operations" id="operations">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+		<option value="%">%</option>
+	</select>
+	<input type="text" id="field2" />
+	<button type="submit" id="submit">Try me!</button>
+
+	<script>
+		setInterval(() => {
+			alert("Please, use me...");
+		}, 30000);
+
+		const alertAndLog = (msg) => {
+			alert(msg);
+			console.log(msg);
+		}
+
+		document.getElementById("submit").addEventListener("click", () => {
+			let field1 = document.querySelector("#field1");
+			let field2 = document.querySelector("#field2");
+
+			let value1 = parseInt(field1.value);
+			let value2 = parseInt(field2.value);
+
+			if (isNaN(value1) || value1 < 0 || isNaN(value2) || value2 < 0)
+			{
+				alert("Error :(");
+				return ;
+			}
+
+			let result = 0;
+
+			let operation = document.querySelector("#operations").value;
+			switch (operation) {
+				case '+':
+					result = value1 + value2;
+					break;
+				case '-':
+					result = value1 - value2;
+					break;
+				case '*':
+					result = value1 * value2;
+					break;
+				case '/':
+					if (value2 == 0)
+					{
+						alertAndLog("It’s over 9000!");
+						return ;
+					}
+					result = value1 / value2;
+					break;
+				case '%':
+					if (value2 == 0)
+					{
+						alertAndLog("It’s over 9000!");
+						return ;
+					}
+					result = value1 % value2;
+					break;
+			}
+
+			alertAndLog(result);
+		});
+	</script>
+</body>
+</html>
