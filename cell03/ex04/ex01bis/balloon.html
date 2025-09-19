@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Explode this balloon</title>
+
+	<style>
+		.ball {
+			width: 200px;
+			height: 200px;
+			background-color: rgba(255, 0, 0, 1);
+			border-radius: 50%;
+			transition: 0.5s;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+	</style>
+	<script src="jquery-3.7.1.js"></script>
+</head>
+
+<body>
+	<div class="ball" id="ball"></div>
+
+	<script>
+		$(document).ready(function () {
+			let $ball = $("#ball");
+
+			let colorState = "toGreen";
+			let ballSize = 200;
+
+			const changeBallColor = (changeAmount) => {
+				let color = $ball.css("background-color");
+				color = color.substring(4, color.length - 1)
+					.replace(/ /g, "")
+					.split(",")
+					.map((v) => parseInt(v));
+
+				if (colorState === "toGreen") {
+					color[0] -= changeAmount;
+					color[1] += changeAmount;
+					color[0] -= changeAmount;
+					if (color[1] > 230) colorState = "toBlue";
+				} else if (colorState === "toBlue") {
+					color[0] -= changeAmount;
+					color[1] -= changeAmount;
+					color[2] += changeAmount;
+					if (color[2] > 230) colorState = "toRed";
+				} else if (colorState === "toRed") {
+					color[0] += changeAmount;
+					color[1] -= changeAmount;
+					color[2] -= changeAmount;
+					if (color[0] > 230) colorState = "toGreen";
+				}
+
+				$ball.css("background-color", `rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`);
+			};
+
+			const applyBallSize = () => {
+				$ball.css({
+					width: `${ballSize}px`,
+					height: `${ballSize}px`
+				});
+			};
+
+			$ball.on("mouseleave", () => {
+				if (ballSize >= 205) {
+					ballSize -= 5;
+					applyBallSize();
+				}
+				changeBallColor(-20);
+			});
+
+			$ball.on("click", () => {
+				ballSize += 10;
+				applyBallSize();
+
+				if (ballSize + 10 > 420) {
+					ballSize = 200;
+					applyBallSize();
+				}
+
+				changeBallColor(20);
+			});
+		});
+	</script>
+</body>
+
+</html>
